@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es6",
-    "types": []
+    "types": [ "node" ]
   },
   "exclude": [
     "src/test.ts",

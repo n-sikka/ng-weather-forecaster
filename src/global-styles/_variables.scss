@@ -7,6 +7,7 @@ $theme-purple: #575DA9;
 $theme-red: #FF7C93;
 $theme-green: #00EA6C;
 $theme-yellow: #FEDC3D;
+$theme-blue: #59A1FF;
 
 $theme-black: #333C4F;
 $theme-dark-gray: #6F7480;
@@ -16,13 +17,14 @@ $theme-white: #FFFFFF;
 
 $base-font-size: 16px;
 $base-border-radius: 0;
+$base-font-family: 'Roboto', sans-serif;
 
 // UTILITY
 $font-black: $theme-black;
 $font-grey: $theme-dark-gray; 
     
 $btn-min-width: 5rem;
-$link-color: lighten($color-primary, 10%);
+$link-color: lighten($theme-blue, 10%);
 
 /** BREAKPOINTS - used with mixin @for-screen
 ========================================================================== */

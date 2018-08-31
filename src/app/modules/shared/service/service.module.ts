@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import {
-  AuthService
+  AuthService,
+  WeatherService
 } from './app';
 
 import {
@@ -12,19 +14,22 @@ import {
 
 export {
   AuthService,
-  AuthGuard
+  AuthGuard,
+  WeatherService
 }
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   declarations: [
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    WeatherService
   ]
 })
 export class ServiceModule { }

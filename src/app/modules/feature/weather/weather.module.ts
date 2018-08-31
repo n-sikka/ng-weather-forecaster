@@ -9,6 +9,7 @@ import { WeatherRoutingModule } from './weather-routing.module';
 
 import { WeatherHomeComponent } from './components/';
 import { WeatherContainer } from './container/';
+import { CityFacade } from './facade/'
 
 @NgModule({
   imports: [
@@ -19,6 +20,9 @@ import { WeatherContainer } from './container/';
   declarations: [
     WeatherHomeComponent,
     WeatherContainer
+  ],
+  providers: [
+    CityFacade
   ]
 })
 export class WeatherModule { }
