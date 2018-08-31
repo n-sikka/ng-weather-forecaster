@@ -1,0 +1,33 @@
+.text--gray {
+    color: $theme-dark-gray;
+}
+
+.hr--label {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    clear: both;
+    overflow: hidden;
+    &:before {
+        content: '';
+        position: relative;
+        width: 40%;
+        background-color: rgba($theme-black,0.2);
+        display: inline-block;
+        height: 1px;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    &:after {
+        content: '';
+        position: relative;
+        width: 40%;
+        background-color: rgba($theme-black,0.2);
+        display: inline-block;
+        height: 1px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+}

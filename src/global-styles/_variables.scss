@@ -1,0 +1,49 @@
+// BASE
+$color-primary: #00E3E3;
+$color-secondary: #00F4CB;
+$color-accent: #FF890A;
+
+$theme-purple: #575DA9;
+$theme-red: #FF7C93;
+$theme-green: #00EA6C;
+$theme-yellow: #FEDC3D;
+
+$theme-black: #333C4F;
+$theme-dark-gray: #6F7480;
+$theme-gray: #C5C7CD;
+$theme-lightgray: #F3F5F8;
+$theme-white: #FFFFFF;
+
+$base-font-size: 16px;
+$base-border-radius: 0;
+
+// UTILITY
+$font-black: $theme-black;
+$font-grey: $theme-dark-gray; 
+    
+$btn-min-width: 5rem;
+$link-color: lighten($color-primary, 10%);
+
+/** BREAKPOINTS - used with mixin @for-screen
+========================================================================== */
+
+$mobile-sm: 320px;
+$mobile: 425px; //targetting android phones as standard
+$tablet: 768px;
+$desktop: 1366px;
+$super-desktop: 1920px;
+
+
+
+/*****************************BOOTSTRAP OVERRIDE***************************/
+$theme-colors: (
+    "primary":    $color-primary,
+    "secondary":  $color-secondary,
+    "accent":     $color-accent,
+    "success":    $theme-green,
+    "info":       $theme-purple,
+    "warning":    $theme-yellow,
+    "danger":     $theme-red,
+    "light":      $theme-lightgray,
+    "dark":       $theme-black
+);

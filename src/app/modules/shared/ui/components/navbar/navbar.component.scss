@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'mixins';
+$nav-height: 48px;
+
+nav {
+    background-color: $theme-black;
+    padding: 15px;
+    min-height: $nav-height;
+
+    .nav-logo {
+        line-height: $nav-height;
+        font-size: 2rem;
+        font-family: 'Roboto', sans-serif;
+        color: $theme-white;
+        transition: 1s all;
+
+        @include for-screen('mobile') {
+            font-size: 1.25rem;
+        }
+    }
+}

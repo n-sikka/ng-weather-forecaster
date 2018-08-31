@@ -1,0 +1,1 @@
+export { WeatherHomeComponent } from './weather-home/weather-home.component';

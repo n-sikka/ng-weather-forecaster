@@ -1,0 +1,22 @@
+.btn-addon__container {
+    .btn-addon {
+        min-width: 2rem;
+        padding-right: 5px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    .btn-text {
+        text-align: center;
+        width: 80%;
+        min-width: 4rem;;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+        .btn-addon {
+            border-right: 1px solid darken($value, 10%)
+        }
+    }
+}
