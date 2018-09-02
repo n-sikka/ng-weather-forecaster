@@ -13,6 +13,7 @@
         border-radius: 3px;
 
         .Forecast__Card__header {
+            background-color: red;
             display: flex;
             align-items: flex-start;
 
@@ -38,9 +39,33 @@
             }
         }
 
-        .Forecast__CurrentTemperature {
-            font-size: 48px;
+        .Forecast__Card__Body {
+            margin: 5px 0;
+            background-color: $theme-lightgray;
+            padding: 10px;
+
+            .Forecast__Card__Body__main,
+            .Forecast__Card__Body__meta {
+                margin: 5px;
+            } 
+
+            .Forecast__Card__Body__main {
+                background-color: $theme-yellow;
+            }
+
+            .Forecast__Card__Body__meta {
+                background-color: $theme-purple;
+            }
+
+            .Forecast__CurrentTemperature {
+                font-size: 48px;
+            }
         }
+        
+        .Forecast__Card__Footer {
+            background-color: $theme-blue;
+        }
+
     }
 }
 
