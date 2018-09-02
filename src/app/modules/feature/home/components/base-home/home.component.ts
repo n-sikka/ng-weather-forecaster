@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   citySelected(selectedItem) {
-    this.router.navigate(['weather'],  { queryParams: { q: `${selectedItem.name},${selectedItem.country}` })
+    this.router.navigate(['weather'],  { queryParams: { q: `${selectedItem.name},${selectedItem.country}` }})
   }
 
   getPosition() {
