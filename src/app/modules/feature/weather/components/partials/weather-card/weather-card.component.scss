@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 .Forecast__Container {
     text-align: center;
@@ -7,13 +8,13 @@
     .Forecast__Card {
         background-color: $theme-white;
         box-shadow: 2px 2px 7px 3px rgba($theme-black, 0.1); 
-        padding: 25px 10px;
+        padding: 25px;
         max-width: 1024px;
-        margin: 0 auto;
+        margin: 25px auto;
         border-radius: 3px;
 
         .Forecast__Card__header {
-            background-color: red;
+            // background-color: red;
             display: flex;
             align-items: flex-start;
 
@@ -21,10 +22,29 @@
                 flex: 1;
                 font-size: 24px;
                 margin-bottom: 25px;
+                transition: 0.1s all ease;
+                
+                @include for-screen('mobile') {
+                    flex: 80%;
+                    font-size: 18px;
+                }
+
+                b {
+                    font-weight: bolder;
+                }
+                 * {
+                     font-weight: normal;
+                 }
             }
             
             .__options {
                 flex: 1;
+                transition: 0.1s all ease;
+
+                @include for-screen('mobile') {
+                    flex: 20%;
+                    transform: scale(0.8);
+                }
 
                 display: flex;
                 justify-content: flex-end;
@@ -40,33 +60,64 @@
         }
 
         .Forecast__Card__Body {
-            margin: 5px 0;
-            background-color: $theme-lightgray;
-            padding: 10px;
+            padding: 25px 0;
 
-            .Forecast__Card__Body__main,
-            .Forecast__Card__Body__meta {
-                margin: 5px;
+            .Forecast__Card__Body__inner {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                margin-right: 5px;
+
+                @include for-screen('mobile') {
+                    text-align: center;
+                }
             } 
 
-            .Forecast__Card__Body__main {
-                background-color: $theme-yellow;
+            .Forecast__CurrentTemperature__container {
+                @include for-screen('mobile') {
+                    width: 90%;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+
+                .Forecast__CurrentTemperature {
+                    font-size: 48px;
+                    display: flex;
+                    align-items: center;
+                }
             }
 
-            .Forecast__Card__Body__meta {
-                background-color: $theme-purple;
-            }
-
-            .Forecast__CurrentTemperature {
-                font-size: 48px;
-            }
         }
         
         .Forecast__Card__Footer {
-            background-color: $theme-blue;
+            margin-top: 15px;
+
+            .Forecast__Card__Footer__day {
+                margin: 5px;
+                padding: 15px 0;
+                border: 1px solid $theme-lightgray;
+                background-color: $color-secondary;
+                border-radius: 5px;
+                min-height: 90px;
+
+                .Forecast__Footer__temperature--colored {
+                    color: darken($color-secondary, 20%);
+                }
+            }
+            
         }
 
     }
+}
+
+.WeatherIcon {
+    width: 70px;
+    height: auto;
+}
+
+.WeatherIcon--small {
+    width: 50px;
+    height: auto;
 }
 
 
@@ -90,7 +141,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $theme-gray;
+    background-color: $color-secondary;
     -webkit-transition: .4s;
     transition: .4s;
 
@@ -116,7 +167,7 @@
 }
 
 input:checked + .slider {
-    background-color: $theme-blue;
+    background-color: $color-secondary;
 }
 
 input:focus + .slider {

@@ -16,8 +16,13 @@ a {
     color: $link-color;
     cursor: pointer;
     transition: 0.25s color ease;
-
+    text-decoration: none;
+    
     &:hover {
         color: darken($theme-blue, 10%);
     }
+}
+
+h3,h4,h5,h6 {
+    margin: 10px 0;
 }

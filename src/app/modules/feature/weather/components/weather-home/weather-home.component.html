@@ -1,5 +1,9 @@
 <div>
-  <ng-container *ngFor="let day of daysArray">
-    <weather-card [forecast]="subGroup[day]" [city]="selectedCity"></weather-card>
-  </ng-container>
+  <div class="Todays__container" *ngIf="todaysData">
+    <weather-card [todaysForecast]="todaysData" [forecast]="subGroup" [days]="daysArray" [city]="selectedCity"></weather-card>
+  </div>
+
+  <div class="container text-center">
+    <h3><a [routerLink]="['/home']">Go Back</a></h3>
+  </div>
 </div>

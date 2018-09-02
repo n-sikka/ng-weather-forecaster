@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
@@ -16,6 +16,8 @@ export class WeatherHomeComponent implements OnInit {
   forecast: Array<any>;
   subGroup: object = {};
   daysArray: Array<string>;
+  todaysData: Array<any>; 
+  geocoder;
 
   constructor(
     private weatherFacade: WeatherFacade,
@@ -30,11 +32,12 @@ export class WeatherHomeComponent implements OnInit {
         this.getForecastData()
       })
   }
-
+  
   async getForecastData() {
+    const todayDate = new Date()
     this.forecast = await this.weatherFacade.getForecast(this.selectedCity)
     this.forecast.forEach((el) => {
-      let date = this.datePipe.transform(el.dt*1000, 'ddmmyyyy');
+      let date = this.datePipe.transform(el.dt*1000, 'ddMyyyy');
       if (this.subGroup[date.toString()]) {
         this.subGroup[date.toString()].push(el);
       } else {
@@ -42,6 +45,14 @@ export class WeatherHomeComponent implements OnInit {
         this.subGroup[date.toString()].push(el);
       }
     })
+
     this.daysArray = Object.keys(this.subGroup);
+    const today = `${todayDate.getDate()}${todayDate.getMonth()+1}${todayDate.getFullYear()}`
+    
+    this.daysArray.forEach((day)=> {
+      if (parseInt(day) == parseInt(today)) {
+        this.todaysData = this.subGroup[day]
+      }
+    })
   }
 }

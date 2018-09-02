@@ -3,15 +3,16 @@
 $nav-height: 48px;
 
 nav {
-    background-color: $theme-black;
+    background-color: $color-primary;
     padding: 15px;
     min-height: $nav-height;
 
     .nav-logo {
         line-height: $nav-height;
         font-size: 2rem;
-        color: $theme-white;
+        color: darken($color-primary, 25%);
         transition: 1s all;
+        cursor: pointer;
 
         @include for-screen('mobile') {
             font-size: 1.25rem;
