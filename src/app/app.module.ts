@@ -16,7 +16,8 @@ import {
  * Feature Modules
  */
 import {
-  WeatherModule
+  WeatherModule,
+  HomeModule
 } from '@app/feature/';
 
 // App Config/APIs etc
@@ -35,6 +36,7 @@ import { AppComponent } from './app.component';
     UIModule.forRoot(),
     ServiceModule,
 
+    HomeModule,
     WeatherModule,
     AppRoutingModule
   ],

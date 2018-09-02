@@ -23,6 +23,7 @@
       "@app/shared/core/": ["./src/app/modules/shared/core/core.module"],
       "@app/shared/service/": ["./src/app/modules/shared/service/service.module"],
       "@app/feature/weather/": ["./src/app/modules/feature/weather/weather.module"],
+      "@app/feature/home/": ["./src/app/modules/feature/home/home.module"]
     }
   }
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { Ng2SearchPipeModule, Ng2SearchPipe } from 'ng2-search-filter';
+
 import {
   UIModule
 } from '@app/shared/'
@@ -9,20 +11,29 @@ import { WeatherRoutingModule } from './weather-routing.module';
 
 import { WeatherHomeComponent } from './components/';
 import { WeatherContainer } from './container/';
-import { CityFacade } from './facade/'
+
+import { 
+  WeatherFacade,
+  UnitConvertorService
+} from './facade/';
+import { WeatherCardComponent } from './components/partials/weather-card/weather-card.component';
 
 @NgModule({
   imports: [
     CommonModule,
     UIModule,
-    WeatherRoutingModule
+    WeatherRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [
     WeatherHomeComponent,
-    WeatherContainer
+    WeatherContainer,
+    WeatherCardComponent
   ],
   providers: [
-    CityFacade
+    WeatherFacade,
+    UnitConvertorService,
+    Ng2SearchPipe
   ]
 })
 export class WeatherModule { }

@@ -1,4 +1,6 @@
 export interface IAppConfig {
-    server: string,
-    weatherApiString?: string
+    weatherServer: string,
+    weatherApi?: string,
+    forecastApi?: string,
+    weatherApiAppId?: string
 }

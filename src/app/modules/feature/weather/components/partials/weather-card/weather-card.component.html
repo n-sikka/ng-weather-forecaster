@@ -1,0 +1,51 @@
+<div class="Forecast__Container">
+  <div class="Forecast__Card">
+    <div class="Forecast__Card__header text-left">
+        <div class="__title">
+          {{ city }}
+        </div>
+        <div class="__options text-right">
+            <span class="__options__label">
+                K&deg; 
+            </span>
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="isCelcius"  [checked]="isCelcius" (change)="onUnitChanged(isCelcius)">
+              <span class="slider round"></span>
+            </label>
+            <span class="__options__label">
+                C&deg;
+            </span>
+        </div>
+    </div>
+
+    <div class="Forecast__Card__body text-left">
+        <div class="Forecast__Card__body__main">
+            <h3 class="mt-0 mb-0">{{ forecast[0].weather[0].main }}</h3>
+            <h3 class="helper-text mt-0 mb-0">{{ forecast[0].weather[0].description }}</h3>
+            <h1 class="Forecast__CurrentTemperature" *ngIf="isCelcius">{{ unitConvertor.kelvinToCelcius(forecast[0].main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}  </h1>
+            <h1 class="Forecast__CurrentTemperature" *ngIf="!isCelcius">{{ unitConvertor.kelvinToFahrenheit(forecast[0].main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}  </h1>
+            <div>
+                Morning - {{ getMorningTemp() }}
+                Day - {{ getDayTemp() }}
+                Evening - {{ getEveningTemp() }}
+                Night - {{ getNightTemp() }}
+            </div>
+        </div>
+
+        <div class="Forecast__Card__body__meta">
+          <div *ngFor="let data of forecast">
+            <span class="" *ngIf="isCelcius">{{ unitConvertor.kelvinToCelcius(data.main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}  </span>
+            <span class="" *ngIf="!isCelcius">{{ unitConvertor.kelvinToFahrenheit(data.main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}  </span>
+          </div>
+          <div *ngFor="let day of forecast">
+            {{ day.dt*1000 | date:'EEEE' }}
+          </div>
+          
+        </div>
+    </div>
+
+    <div class="Forecast__Card__footer">
+
+    </div>
+  </div>
+</div>

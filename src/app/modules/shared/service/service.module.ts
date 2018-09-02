@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import {
   AuthService,
@@ -22,7 +22,8 @@ export {
   imports: [
     CommonModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   declarations: [
   ],

@@ -12,7 +12,8 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: WeatherHomeComponent
+        component: WeatherHomeComponent,
+        
       }
     ]
   }

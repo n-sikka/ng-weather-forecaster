@@ -14,9 +14,12 @@ const appRoutes: Routes = [
     },
     { 
         path: 'home', 
-        loadChildren: '@app/feature/weather/#WeatherModule',
-        // canActivate: [ AuthGuard ]
+        loadChildren: '@app/feature/home/#HomeModule',
     },
+    { 
+        path: 'weather', 
+        loadChildren: '@app/feature/weather/#WeatherModule',
+    }
 ];
 
 @NgModule({

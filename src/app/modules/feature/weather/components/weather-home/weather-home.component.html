@@ -1,26 +1,5 @@
-<div class="WeatherHome__Container">
-  
-  <div class="WeatherHome__SearchGroup">
-    <input class="WeatherHome__Input" type="search" placeholder="Search City.." (keypress)="search($event)">
-    <i class="fa fa-search"></i>
-  </div>
-
-  <div class="typeahead" *ngIf="searchText">
-    <div>
-      <p *ngFor="let city of cityArray | slice:0:limit : filter : searchText">
-        {{ city.name }}
-      </p>
-      <a (click)="getMoreOptions()">See more</a>
-    </div>
-  </div>
-  
-  <p class="hr--label WeatherHome__Hr">
-    OR
-  </p>
-
-  <h2 class="helper-text">
-    Use My
-    <a (click)="getPosition()">Current Position</a>
-  </h2>
-
+<div>
+  <ng-container *ngFor="let day of daysArray">
+    <weather-card [forecast]="subGroup[day]" [city]="selectedCity"></weather-card>
+  </ng-container>
 </div>

@@ -13,6 +13,8 @@ export class WeatherService {
 
   conf: any;
   weatherApi: string;
+  forecastApi: string;
+  private _weatherApiAppId: string;
 
   constructor(
     @Inject(API_CONFIG) private config: IAppConfig,
@@ -20,11 +22,22 @@ export class WeatherService {
     private router: Router
   ) {
     this.conf = config;
-    this.weatherApi = this.conf.server + this.conf.weatherApiString;
+    this.weatherApi = this.conf.weatherServer + this.conf.weatherApi;
+    this.forecastApi = this.conf.weatherServer + this.conf.forecastApi;
+    this._weatherApiAppId = '&appid='+this.conf.weatherApiAppId;
   }
 
   public getCities(): Observable<any> {
-    const CITIES = require('../../../data/city.list.min.json');
-    return of(CITIES);
+    const CITIES = require('../../../data/city.list.json');
+    console.log(CITIES.length)
+    return of(CITIES)
+  }
+
+  public getWeatherByCityName(cityName: string) {
+    return this.http.get(this.weatherApi+cityName+this._weatherApiAppId)
+  }
+
+  public getForecastByCityName(cityName: string) {
+    return this.http.get(this.forecastApi+cityName+this._weatherApiAppId)
   }
 }
