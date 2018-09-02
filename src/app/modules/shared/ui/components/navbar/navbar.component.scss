@@ -3,14 +3,15 @@
 $nav-height: 48px;
 
 nav {
-    background-color: $color-primary;
+    background-color: $theme-white;
     padding: 15px;
     min-height: $nav-height;
+    box-shadow: 2px 2px 7px 3px rgba($theme-black, 0.1); 
 
     .nav-logo {
         line-height: $nav-height;
         font-size: 2rem;
-        color: darken($color-primary, 25%);
+        color: darken($color-primary, 10%);
         transition: 1s all;
         cursor: pointer;
 

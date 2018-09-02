@@ -4,67 +4,58 @@
         <div class="__title">
           <b>{{ city }}</b>
           <p class="helper-text">
-            {{ todaysForecast[0].dt*1000 | date: 'EEEE, hh:mm a' }} <br>
+            {{ selectedForecast[0].dt*1000 | date: 'EEEE, hh:mm a' }} <br>
           </p>
-          <h4 class="helper-text mt-0 mb-0">{{ todaysForecast[0].weather[0].main }}</h4>
+          <h4 class="helper-text mt-0 mb-0">{{ selectedForecast[0].weather[0].main }}</h4>
         </div>
         <div class="__options text-right">
-            <span class="__options__label">
+            <span class="__options__label" [ngClass]="{ 'selectedUnit': selectedUnit == 'F' }">
                 F&deg; 
             </span>
             <label class="switch">
               <input type="checkbox" [(ngModel)]="isCelcius"  [checked]="isCelcius" (change)="onUnitChanged(isCelcius)">
               <span class="slider round"></span>
             </label>
-            <span class="__options__label">
+            <span class="__options__label" [ngClass]="{ 'selectedUnit': selectedUnit == 'C' }">
                 C&deg;
             </span>
         </div>
     </div>
 
-    <div class="Forecast__Card__Body text-left d-flex" *ngIf="todaysForecast">
+    <div class="Forecast__Card__Body text-left d-flex" *ngIf="selectedForecast">
         <div class="Forecast__Card__Body__inner flex-1">
           <div class="Forecast__CurrentTemperature__container">
-            <h1 class="my-0 Forecast__CurrentTemperature" *ngIf="isCelcius">
-              <img class="WeatherIcon" [src]="'http://openweathermap.org/img/w/'+todaysForecast[0].weather[0].icon+'.png'" alt="weather">
-              <span>{{ unitConvertor.kelvinToCelcius(todaysForecast[0].main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}  </span>
-            </h1>
-            <h1 class="my-0 Forecast__CurrentTemperature" *ngIf="!isCelcius"> 
-              <img class="WeatherIcon" [src]="'http://openweathermap.org/img/w/'+todaysForecast[0].weather[0].icon+'.png'" alt="weather">
-              <span>{{ unitConvertor.kelvinToFahrenheit(todaysForecast[0].main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}</span>
+            <h1 class="my-0 Forecast__CurrentTemperature" >
+              <img class="WeatherIcon" [src]="'http://openweathermap.org/img/w/'+selectedForecast[0].weather[0].icon+'.png'" alt="weather">
+              <span>{{ toSelectedUnit(selectedForecast[0].main.temp) | number:'1.1-2' }}&deg; {{ selectedUnit }}  </span>
             </h1>
           </div>
         </div>
 
         <div class="Forecast__Card__Body__inner flex-1 text-right">
-          <h4 class="mt-0 helper-text">Humidity - {{ todaysForecast[0].main.humidity }}% </h4>
-          <h4 class="mt-0 helper-text">Wind Speed - {{ todaysForecast[0].wind.speed }}mps</h4>
-          <h4 class="mt-0 helper-text">Pressure - {{ todaysForecast[0].main.pressure }} hPa</h4>
+          <h4 class="mt-0 helper-text">Humidity - {{ selectedForecast[0].main.humidity }}% </h4>
+          <h4 class="mt-0 helper-text">Wind Speed - {{ selectedForecast[0].wind.speed }}mps</h4>
+          <h4 class="mt-0 helper-text">Pressure - {{ selectedForecast[0].main.pressure }} hPa</h4>
         </div>
     </div>
 
     <div class="text-left">
-        <h3 class="helper-text">Forecast for the week</h3>
+        <h3 class="helper-text">Forecast for the week <span class="helper-text">(click to see details)</span></h3>
     </div>
 
     <div class="Forecast__Card__Footer d-flex">
-        <div *ngFor="let day of days" class="flex-1 mobile-half">
+        <div *ngFor="let day of days" class="flex-1 mobile-half FutureForecast__Card" (click)="updateSummary(day)">
           <div class="Forecast__Card__Footer__day">
-              <h4 class="my-0">
+              <h4 class="my-0 Forecast__Day">
                 {{ forecast[day][0].dt*1000 | date:'EEEE' }}
               </h4>
               <div>
                   <img class="WeatherIcon--small" [src]="'http://openweathermap.org/img/w/' + forecast[day][0].weather[0].icon + '.png'" alt="weather">
               </div>
-              <div *ngIf="isCelcius">
-                <b>{{ unitConvertor.kelvinToCelcius(forecast[day][0].main.temp_min) | number:'1.1-2' }}&deg; {{ selectedUnit }}</b> | 
-                <b class="Forecast__Footer__temperature--colored">{{ unitConvertor.kelvinToCelcius(forecast[day][0].main.temp_max) | number:'1.1-2' }}&deg; {{ selectedUnit }}</b>
+              <div >
+                <b>{{ toSelectedUnit(forecast[day][0].main.temp_min) | number:'1.1-2' }}&deg; {{ selectedUnit }}</b> | 
+                <b class="Forecast__Footer__temperature--colored">{{ toSelectedUnit(forecast[day][0].main.temp_max) | number:'1.1-2' }}&deg; {{ selectedUnit }}</b>
               </div>
-              <div *ngIf="!isCelcius">
-                <b>{{ unitConvertor.kelvinToFahrenheit(forecast[day][0].main.temp_min) | number:'1.1-2' }}&deg; {{ selectedUnit }}</b> | 
-                <b class="Forecast__Footer__temperature--colored">{{ unitConvertor.kelvinToFahrenheit(forecast[day][0].main.temp_max) | number:'1.1-2' }}&deg; {{ selectedUnit }}</b>
-              </div>
-
           </div>
         </div>
     </div>
