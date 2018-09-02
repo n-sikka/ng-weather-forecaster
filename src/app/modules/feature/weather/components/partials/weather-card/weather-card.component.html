@@ -3,6 +3,9 @@
     <div class="Forecast__Card__header text-left">
         <div class="__title">
           {{ city }}
+          <p>
+            {{ forecast[0].dt*1000 | date: 'dd-MMM-yyyy' }}
+          </p>
         </div>
         <div class="__options text-right">
             <span class="__options__label">
