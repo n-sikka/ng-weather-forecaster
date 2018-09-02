@@ -1,0 +1,21 @@
+@import 'variables';
+
+.Typeahead__Container {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 4px 5px 25px -3px $theme-gray;
+    max-height: 300px;
+    overflow-y: auto;
+
+    .Typeahead__Item {
+        padding: 10px 5px;
+        cursor: pointer;
+        text-align: left;
+        &:hover {
+            background-color: $theme-lightgray; 
+        }
+    }
+
+}

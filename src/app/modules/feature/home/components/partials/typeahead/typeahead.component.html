@@ -1,0 +1,5 @@
+<div class="Typeahead__Container" *ngIf="query && isOpen">
+  <p *ngFor="let city of typeaheadList | slice:0:limit" class="Typeahead__Item" (click)="itemClicked(city)">
+    {{ city.name }}
+  </p>
+</div>

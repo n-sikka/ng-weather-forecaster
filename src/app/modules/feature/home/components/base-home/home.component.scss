@@ -1,0 +1,72 @@
+@import 'variables';
+@import 'mixins';
+
+$search-input-height: 60px;
+$search-icon-width: 50px;
+$search-theme-color: $theme-black;
+
+.only-bottom-border {
+    border-top: none;
+    border-left: none; 
+    border-right: none;
+}
+
+.WeatherHome__Container {
+    padding: 10em 2em;
+    text-align: center;
+
+    .WeatherHome__SearchGroup {
+        position: relative;
+        width: 75%;
+        margin: 0 auto;
+        padding: 10px;
+
+        .fa {
+            padding: 10px;
+            width: $search-icon-width;
+            position: absolute;
+            left: 0.5em;
+            height: auto;
+            line-height: 38px; 
+            font-size: 1.25rem;
+            color: $theme-gray;
+            transition: 1s color ease;
+        }
+
+        .WeatherHome__Input {
+            @extend .only-bottom-border;
+            height: $search-input-height;
+            
+            font-size: 1.75rem;
+            padding: 10px;
+            padding-left: $search-icon-width+10px;
+
+            transition: 1s border ease;
+            border-bottom: 2px solid $theme-gray;
+            background: transparent;
+    
+            width: 100%;
+    
+            &:active, &:focus {
+                @extend .only-bottom-border;
+                outline: none;
+                border-bottom: 2px solid $search-theme-color;
+
+                & ~ .fa {
+                    color: $search-theme-color;
+                }
+            }
+        }
+        
+    }
+
+    .WeatherHome__Hr {
+        width: 25%;
+        color: $theme-dark-gray;
+
+        @include for-screen('mobile') {
+            width: 100%;
+        }
+    }
+
+}

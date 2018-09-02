@@ -1,0 +1,1 @@
+export { HomeContainerComponent as HomeContainer } from './home-container/home-container.component';
